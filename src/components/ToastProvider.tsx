@@ -1,4 +1,5 @@
-import { createContext, FC, useContext, useState } from 'react'
+import { createContext, FC, useContext, useState } from 'react';
+import Toaster from './Toaster';
 type ToastProviderProps = {
     children: React.ReactNode;
     autoCloseDuration?: number;
@@ -28,7 +29,13 @@ const ToastContext = createContext<ToastContextType>({
 export const useToast = () => useContext(ToastContext)
 
 const ToastProvider: FC<ToastProviderProps> = ({ autoCloseDuration = 1000, children }) => {
-    const [toasts, setToasts] = useState<Toast[]>([])
+    const sampleToast: Toast = {
+        id: 10,
+        type: ToastType.success,
+        message: 'This is successful',
+        autoCloseTimeout: setTimeout(() => { }, autoCloseDuration)
+    }
+    const [toasts, setToasts] = useState<Toast[]>([sampleToast, sampleToast])
     const [id, setId] = useState<number>(0)
     const add = (type: ToastType, message: string): void => {
         const autoCloseTimeout = setTimeout(() => {
@@ -51,6 +58,7 @@ const ToastProvider: FC<ToastProviderProps> = ({ autoCloseDuration = 1000, child
 
     return (
         <ToastContext.Provider value={toast}>
+            <Toaster toasts={toasts} />
             {children}
         </ToastContext.Provider>
     )
