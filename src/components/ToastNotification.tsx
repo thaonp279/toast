@@ -21,7 +21,8 @@ const ToastNotification: FC<Toast> = ({ id, type, message, title = type }) => {
             bgcolor: '#F2C94C'
         },
         danger: {
-            bgcolor: '#EB5757'
+            bgcolor: '#EB5757',
+            color: 'white'
         }
     }
 
