@@ -13,13 +13,14 @@ export enum ToastType {
 export type Toast = {
     id: number;
     type: ToastType;
+    title?: string;
     message: string;
     autoCloseTimeout: ReturnType<typeof setTimeout>;
 }
 
 type ToastContextType = {
     toasts: Toast[];
-    add: (type: ToastType, message: string) => void
+    add: (type: ToastType, message: string, title?: string) => void
     dismiss: (id: number) => void
 }
 
@@ -37,7 +38,7 @@ const ToastProvider: FC<ToastProviderProps> = ({ autoCloseDuration = 1000, child
     }
     const [toasts, setToasts] = useState<Toast[]>([sampleToast, sampleToast])
     const [id, setId] = useState<number>(0)
-    const add = (type: ToastType, message: string): void => {
+    const add = (type: ToastType, message: string, title?: string): void => {
         const autoCloseTimeout = setTimeout(() => {
             dismiss(id);
         }, autoCloseDuration)
@@ -45,13 +46,18 @@ const ToastProvider: FC<ToastProviderProps> = ({ autoCloseDuration = 1000, child
             id,
             type,
             message,
+            title,
             autoCloseTimeout
         }])
         setId(i => i + 1)
     }
 
     const dismiss = (id: number) => {
-        setToasts(prev => prev.filter(t => t.id !== id))
+        const toastIdx = toasts.findIndex(t => t.id === id);
+        if (toastIdx !== -1) {
+            clearTimeout(toasts[toastIdx].autoCloseTimeout)
+            setToasts(prev => prev.filter(t => t.id !== id))
+        }
     }
 
     const toast = { toasts, add, dismiss }
