@@ -1,9 +1,9 @@
-import { CheckCircleOutline, Close } from "@mui/icons-material";
+import { CheckCircleOutline, Close, DoDisturbAlt, ErrorOutline } from "@mui/icons-material";
 import { Grid, IconButton, SxProps, Typography } from "@mui/material";
 import { FC } from "react";
 import { Toast, ToastType, useToast } from "./ToastProvider";
 
-const ToastNotification: FC<Toast> = ({ id, type, message, autoCloseTimeout, title = type }) => {
+const ToastNotification: FC<Toast> = ({ id, type, message, title = type }) => {
     const toast = useToast();
     const handleDismiss = () => {
         toast.dismiss(id)
@@ -25,9 +25,15 @@ const ToastNotification: FC<Toast> = ({ id, type, message, autoCloseTimeout, tit
         }
     }
 
+    const icons: { [key in ToastType]: React.ReactNode } = {
+        success: <CheckCircleOutline />,
+        warning: <ErrorOutline />,
+        danger: <DoDisturbAlt />
+    }
+
     return (
         <Grid container direction='row' sx={{ ...defaultSx, ...sx[type] }} alignItems='center' gap={2}>
-            <CheckCircleOutline />
+            {icons[type]}
             <Grid item flexGrow={1}>
                 <Typography variant='body1' fontWeight={600} sx={{ textTransform: 'capitalize' }}>{title}</Typography>
                 <Typography variant="body2">{message} </Typography>

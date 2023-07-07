@@ -30,13 +30,7 @@ const ToastContext = createContext<ToastContextType>({
 export const useToast = () => useContext(ToastContext)
 
 const ToastProvider: FC<ToastProviderProps> = ({ autoCloseDuration = 1000, children }) => {
-    const sampleToast: Toast = {
-        id: 10,
-        type: ToastType.success,
-        message: 'This is successful',
-        autoCloseTimeout: setTimeout(() => { }, autoCloseDuration)
-    }
-    const [toasts, setToasts] = useState<Toast[]>([sampleToast, sampleToast])
+    const [toasts, setToasts] = useState<Toast[]>([])
     const [id, setId] = useState<number>(0)
     const add = (type: ToastType, message: string, title?: string): void => {
         const autoCloseTimeout = setTimeout(() => {
