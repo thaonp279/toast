@@ -29,7 +29,7 @@ const ToastContext = createContext<ToastContextType>({
 })
 export const useToast = () => useContext(ToastContext)
 
-const ToastProvider: FC<ToastProviderProps> = ({ autoCloseDuration = 1000, children }) => {
+const ToastProvider: FC<ToastProviderProps> = ({ autoCloseDuration = 500, children }) => {
     const [toasts, setToasts] = useState<Toast[]>([])
     const [id, setId] = useState<number>(0)
     const add = (type: ToastType, message: string, title?: string): void => {
@@ -47,11 +47,11 @@ const ToastProvider: FC<ToastProviderProps> = ({ autoCloseDuration = 1000, child
     }
 
     const dismiss = (id: number) => {
-        const toastIdx = toasts.findIndex(t => t.id === id);
-        if (toastIdx !== -1) {
-            clearTimeout(toasts[toastIdx].autoCloseTimeout)
-            setToasts(prev => prev.filter(t => t.id !== id))
-        }
+        setToasts(prev => {
+            const toRemove = prev.filter(t => t.id === id)
+            toRemove.forEach(t => clearTimeout(t.autoCloseTimeout))
+            return prev.filter(t => t.id !== id)
+        })
     }
 
     const toast = { toasts, add, dismiss }
