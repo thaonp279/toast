@@ -29,7 +29,7 @@ const ToastContext = createContext<ToastContextType>({
 })
 export const useToast = () => useContext(ToastContext)
 
-const ToastProvider: FC<ToastProviderProps> = ({ autoCloseDuration = 3000, children }) => {
+const ToastProvider: FC<ToastProviderProps> = ({ autoCloseDuration = 6000, children }) => {
     const [toasts, setToasts] = useState<Toast[]>([])
     const [id, setId] = useState<number>(0)
     const add = (type: ToastType, message: string, title?: string): void => {

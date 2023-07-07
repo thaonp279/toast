@@ -9,7 +9,7 @@ type ToasterProps = {
 
 const Toaster: FC<ToasterProps> = ({ toasts }) => {
     return (
-        <Box sx={{ position: 'fixed', bottom: 20, width: '100%' }}>
+        <Box sx={{ position: 'fixed', bottom: 20, width: '100%', zIndex: 10}}>
             <Container maxWidth='md'>
                 <Grid direction='column-reverse' container gap={2}>
                     {toasts.map(t => <ToastNotification key={t.id} id={t.id} type={t.type} message={t.message} title={t.title} autoCloseTimeout={t.autoCloseTimeout} />)}

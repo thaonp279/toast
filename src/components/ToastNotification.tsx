@@ -33,10 +33,10 @@ const ToastNotification: FC<Toast> = ({ id, type, message, title = type }) => {
 
     return (
         <Grow in={true}>
-            <Grid container direction='row' sx={{ ...defaultSx, ...sx[type] }} alignItems='center' gap={2}>
+            <Grid container direction='row' sx={{ ...defaultSx, ...sx[type] }} justifyContent='space-between' alignItems='center'>
                 {icons[type]}
-                <Grid item flexGrow={1}>
-                    <Typography variant='body1' fontWeight={600} sx={{ textTransform: 'capitalize' }}>{title}</Typography>
+                <Grid container direction='column' item xs={9} md={10} paddingLeft={2} paddingRight={2} sx={{ overflowX: 'hidden', textOverflow: 'ellipsis' }}>
+                    <Typography variant='body1' fontWeight={600} sx={{ textTransform: 'capitalize' }} noWrap>{title}</Typography>
                     <Typography variant="body2">{message} </Typography>
                 </Grid>
                 <Grid item alignSelf='flex-start'>

@@ -1,6 +1,6 @@
 "use client"
 import { Toast, ToastType, useToast } from '@/components/ToastProvider';
-import { Button } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 
 async function createRandomToast(): Promise<Pick<Toast, 'title' | 'type' | 'message'>> {
   const toasts: Pick<Toast, 'title' | 'type' | 'message'>[] = [
@@ -29,8 +29,8 @@ export default function Home() {
   }
 
   return (
-    <>
-      <Button variant='contained' onClick={onClick}>Button</Button>
-    </>
+    <Grid container direction='column' alignItems='center' padding={10}>
+        <Button variant='contained' onClick={onClick}>Random Toast</Button>
+    </Grid>
   )
 }
