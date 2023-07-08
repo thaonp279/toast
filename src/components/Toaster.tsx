@@ -7,6 +7,10 @@ type ToasterProps = {
     toasts: Toast[];
 }
 
+/**
+ * Toaster is the container component that renders all current toast notifications.
+ * The order of the toasts is reversed so the oldest toast is at the bottom of the page.
+ */
 const Toaster: FC<ToasterProps> = ({ toasts }) => {
     return (
         <Box sx={{ position: 'fixed', bottom: 20, width: '100%', zIndex: 10 }}>

@@ -4,6 +4,11 @@ import { FC } from "react";
 import { useToast } from "./ToastProvider";
 import { Toast, ToastType } from "../types/toast";
 
+/**
+ * ToastNotification renders 3 types of toast notifications: danger, success and warning
+ * If the title is not given, title uses the type as text.
+ * Toast notification can be dismissed by clicking the close button.
+ */
 const ToastNotification: FC<Toast> = ({ id, type, message, title = type }) => {
     const toast = useToast();
     const handleDismiss = () => {
