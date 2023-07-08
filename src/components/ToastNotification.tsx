@@ -1,7 +1,8 @@
 import { CheckCircleOutline, Close, DoDisturbAlt, ErrorOutline } from "@mui/icons-material";
 import { Grid, Grow, IconButton, SxProps, Typography } from "@mui/material";
 import { FC } from "react";
-import { Toast, ToastType, useToast } from "./ToastProvider";
+import { useToast } from "./ToastProvider";
+import { Toast, ToastType } from "../types/toast";
 
 const ToastNotification: FC<Toast> = ({ id, type, message, title = type }) => {
     const toast = useToast();

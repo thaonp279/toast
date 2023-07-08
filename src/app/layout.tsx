@@ -1,9 +1,7 @@
 "use client"
 import ToastProvider from '@/components/ToastProvider'
 import { createTheme, Grid, Slider, ThemeProvider, Typography } from '@mui/material'
-import { Inter } from 'next/font/google'
 import { useState } from 'react'
-import './globals.css'
 const theme = createTheme({
   typography: {
     fontFamily: 'Montserrat'
@@ -14,7 +12,7 @@ const theme = createTheme({
     }
   }
 })
-const inter = Inter({ subsets: ['latin'] })
+
 export default function RootLayout({
   children,
 }: {
@@ -29,7 +27,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin='anonymous' />
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
       </head>
-      <body className={inter.className}>
+      <body>
 
         <ThemeProvider theme={theme}>
           <Grid container direction='column' alignItems='center' padding={2} paddingTop={20}>

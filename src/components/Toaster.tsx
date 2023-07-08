@@ -1,7 +1,7 @@
 import { Box, Container, Grid } from "@mui/material";
 import { FC } from "react";
 import ToastNotification from "./ToastNotification";
-import { Toast } from "./ToastProvider";
+import { Toast } from "../types/toast";
 
 type ToasterProps = {
     toasts: Toast[];

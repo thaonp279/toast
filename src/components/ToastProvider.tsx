@@ -1,21 +1,9 @@
 import { createContext, FC, useContext, useState } from 'react';
+import { Toast, ToastType } from '../types/toast';
 import Toaster from './Toaster';
 type ToastProviderProps = {
     children: React.ReactNode;
     autoCloseDuration?: number;
-}
-
-export enum ToastType {
-    success = 'success',
-    danger = 'danger',
-    warning = 'warning'
-}
-export type Toast = {
-    id: number;
-    type: ToastType;
-    title?: string;
-    message: string;
-    autoCloseTimeout: ReturnType<typeof setTimeout>;
 }
 
 type ToastContextType = {
@@ -27,6 +15,7 @@ type ToastContextType = {
 const ToastContext = createContext<ToastContextType>({
     toasts: [], add: () => { }, dismiss: () => { }
 })
+
 export const useToast = () => useContext(ToastContext)
 
 const ToastProvider: FC<ToastProviderProps> = ({ autoCloseDuration = 6000, children }) => {

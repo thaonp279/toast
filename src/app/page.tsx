@@ -1,5 +1,6 @@
 "use client"
-import { Toast, ToastType, useToast } from '@/components/ToastProvider';
+import { useToast } from '@/components/ToastProvider';
+import { Toast, ToastType } from "@/types/toast";
 import { BreakfastDiningTwoTone } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 
