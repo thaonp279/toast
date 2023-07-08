@@ -12,10 +12,10 @@ Toast notifications are displayed on top of the existing application and dismiss
 ```jsx
 import ToastProvider from '@/components/ToastProvider'
   
-function App(children){
+function App(){
   return (
     <ToastProvider>
-      {children}
+      {...otherComponents}
     </ToastProvider>
   );
 }
