@@ -9,14 +9,14 @@ async function createRandomToast(): Promise<Pick<Toast, 'title' | 'type' | 'mess
     {
       type: ToastType.danger,
       title: 'Offer expiring',
-      message: 'Your job offer is expiring in 2 hours.'
+      message: 'Your job offer is expiring in 2 hours. Please check your offer and let the recruit know if you are happy with the offer.'
     }, {
       type: ToastType.warning,
       title: undefined,
       message: 'You have not completed your job profile.'
     }, {
       type: ToastType.success,
-      title: 'Application submitted!',
+      title: 'Application submitted and sent to recruiter!',
       message: 'Your application has been submitted to recruiters.'
     }
   ]
