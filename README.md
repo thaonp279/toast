@@ -3,8 +3,7 @@
 Toast notifications are displayed on top of the existing application and dismissed automatically after a duration. Users can also dismiss the notification by clicking the close button.
 
 ## Demo
-
-![ezgif com-video-to-gif](https://github.com/thaonp279/toast/assets/77321721/c6295602-fdf3-4335-9752-7c1ba9732948)
+![ezgif com-video-to-gif](https://github.com/thaonp279/toast/assets/77321721/783889fc-64d0-4d78-90da-83a6dbd009eb)
 
 ## Usage
 **PROVIDER**: ToastProvider functions as a React Context that should be added to the top of the application.
